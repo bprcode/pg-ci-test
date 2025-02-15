@@ -1,0 +1,32 @@
+{
+  "name": "pg-ci-test",
+  "version": "1.0.0",
+  "description": "Test for PostgreSQL container",
+  "homepage": "https://github.com/bprcode/pg-ci-test#readme",
+  "bugs": {
+    "url": "https://github.com/bprcode/pg-ci-test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bprcode/pg-ci-test.git"
+  },
+  "license": "UNLICENSED",
+  "author": "",
+  "type": "commonjs",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "nodemon -L src/app.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
