@@ -5,46 +5,36 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "push-action" ]
+    branches: [ "spin-postgres" ]
   pull_request:
-    branches: [ "push-action" ]
+    branches: [ "spin-postgres" ]
 
 env:
   SAMPLE_KEY: yamlSampleKey
 
 jobs:
-  build:
+  spin-up-postgres:
 
+    # Run on Linux OS, as required for containers:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    # Starting point image?
+    container: node:22-bookworm-slim
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - name: run test script
-      run: |
-        . ./test.sh
-        ps
-    - name: clean up node process
-      run: |
-        pkill node
-        ps
-    - name: show results
-      run: |
-        if [[ "$testy" == "Status OK" ]]; then
-          echo "✅ Status was OK"
-          exit 0
-        else
-          echo "❌ Bad status, test failed"
-          exit 1
-        fi
+    # We will run a service within our job:
+    services:
+      # Label our database service container:
+      postgres:
+        # Thanks, Docker Hub
+        image: postgres
+        env:
+          # Not so secret, but won't last long?
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
+
