@@ -7,7 +7,7 @@ const app = express()
 
 app
   .get('/', (req: Request, res: Response) => {
-    res.send('NOT Status OK')
+    res.send('Status OK')
   })
   .get('/test-query', async (req:Request, res:Response) => {
     const client = new pg.Client()
