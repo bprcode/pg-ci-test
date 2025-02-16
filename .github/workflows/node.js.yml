@@ -42,7 +42,7 @@ jobs:
       - name: Install NPM packages
         run: |
           npm ci
-          npm build
+          npm run build
       - name: Start the server
         run: node dist/app.js
       - name: Shut down the server
