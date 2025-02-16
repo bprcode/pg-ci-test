@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Starting point image?
-    container: node:22-bookworm-slim
+    container: node:22-bookworm
 
     # We will run a service within our job:
     services:
