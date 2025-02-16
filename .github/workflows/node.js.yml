@@ -54,5 +54,9 @@ jobs:
           pkill node
           echo "after..."
           ps
+      - name: Try once again to shut down the server
+        run: |
+          pkill node
+          ps
 
 
