@@ -31,6 +31,7 @@ jobs:
     - run: |
         echo check one
         echo check two
+    - run: ls -l
     - run: ./test.sh
     - run: ps
     - run: pkill node
