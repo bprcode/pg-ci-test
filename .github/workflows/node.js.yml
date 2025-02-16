@@ -32,7 +32,7 @@ jobs:
         echo check one
         echo check two
     - run: ls -l
-    - run: ./test.sh
+    - run: . ./test.sh
     - run: ps
     - run: pkill node
     - run: 'echo "here was the result: $testy"'
