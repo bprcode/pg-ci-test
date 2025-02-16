@@ -37,7 +37,7 @@ jobs:
           --health-retries 5
 
     steps:
-      name: Say Hello
-      run: echo hello~; pwd
+      - name: Say Hello
+        run: echo hello~; pwd
 
 
