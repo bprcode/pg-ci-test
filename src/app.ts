@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config({ path: '../.lite-secrets/pg-ci/.env'})
 import express, { Request, Response } from 'express'
 const app = express()
 
@@ -10,4 +12,5 @@ let server = app.listen(3000, () => {
   console.log(
     '🦆 Server up: \u001b[36mhttp://localhost:' + address.port + '\u001b[37m'
   )
+  console.log('Environment check:', process.env.SAMPLE_KEY)
 })
