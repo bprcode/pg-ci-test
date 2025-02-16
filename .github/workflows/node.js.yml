@@ -44,7 +44,7 @@ jobs:
           npm ci
           npm run build
       - name: Start the server
-        run: node dist/app.js
+        run: node dist/app.js &
       - name: Shut down the server
         run: |
           echo before:
