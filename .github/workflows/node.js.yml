@@ -31,11 +31,6 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - name: mic-check
-      run: |
-        echo check one
-        echo check two
-    - run: ls -l
     - name: run test script
       run: |
         . ./test.sh
@@ -45,4 +40,11 @@ jobs:
         pkill node
         ps
     - name: show results
-      run: 'echo "here was the result: $testy"'
+      run: |
+        if [[ "$testy" == "Status OK" ]]; then
+          echo "✅ Status was OK"
+          exit 0
+        else
+          echo "❌ Bad status, test failed"
+          exit 1
+        fi
