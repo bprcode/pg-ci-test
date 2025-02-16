@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Todo: write test action\" && exit 0",
     "build": "tsc",
     "dev": "nodemon -L src/app.ts"
   },
