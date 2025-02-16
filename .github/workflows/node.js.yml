@@ -43,6 +43,8 @@ jobs:
         run: |
           npm ci
           npm run build
+          echo "haven't started server yet..."
+          ps
       - name: Start the server
         run: node dist/app.js &
       - name: Shut down the server
