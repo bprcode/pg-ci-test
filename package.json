@@ -17,7 +17,11 @@
   "scripts": {
     "test": "echo \"Todo: write test action\" && exit 0",
     "build": "tsc",
-    "dev": "nodemon -L src/app.ts"
+    "dev": "nodemon -L src/app.ts",
+    "serve": "node dist/app.js",
+    "serve-and-check": "node dist/app.js & sleep 5 && curltest=$(curl http://localhost:3000 -s) && echo \"got curltest back: $curltest\" && if [[ \"$curltest\" == 'Status OK' ]]; then echo '🙂 Status looks good'; exit 0; else echo '😥 Bad status'; exit 1; fi",
+    "wsl": "wsl ./test.sh",
+    "sc": "ver"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
