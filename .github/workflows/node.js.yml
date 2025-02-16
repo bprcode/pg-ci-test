@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ "push-action" ]
 
+env:
+  SAMPLE_KEY: yamlSampleKey
+  
 jobs:
   build:
 
