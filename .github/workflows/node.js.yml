@@ -40,8 +40,9 @@ jobs:
       run: |
         . ./test.sh
         ps
+    - name: clean up node process
+      run: |
         pkill node
         ps
-    - run: pkill node
     - name: show results
       run: 'echo "here was the result: $testy"'
