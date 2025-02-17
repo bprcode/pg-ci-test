@@ -47,16 +47,8 @@ jobs:
           ps
       - name: Start the server
         run: node dist/app.js &
-      - name: Shut down the server
+      - name: Make test curl
         run: |
-          echo "before..."
-          ps
-          pgrep -io "node" | xargs kill 
-          echo "after..."
-          ps
-      - name: Try once again to shut down the server
-        run: |
-          pkill node
-          ps
+          echo Curl result: $(curl http://localhost:3000 -s)
 
 
