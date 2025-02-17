@@ -65,7 +65,7 @@ jobs:
           psql --version
       - name: Load database
         run: |
-          echo "create database fruit_sample_2" | psql -U postgres
-          psql -U postgres -d fruit_sample_2 < ./test/example-schema.sql
+          echo "create database fruit_sample_2" | psql -U postgres -h postgres
+          psql -U postgres -h postgres -d fruit_sample_2 < ./test/example-schema.sql
 
 
