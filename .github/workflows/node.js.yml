@@ -64,6 +64,8 @@ jobs:
         run: |
           node dist/app.js &
           sleep 5 && npm test
+        ports:
+          - 3000:3000
         env:
           PGHOST: postgres
           PGPORT: 5432
