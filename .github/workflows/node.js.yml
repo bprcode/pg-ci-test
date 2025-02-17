@@ -41,6 +41,8 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Now check out the code
+        uses: actions/checkout@v4
       - name: Install psql
         run: |
           apt update
@@ -52,9 +54,8 @@ jobs:
         run: |
           echo "create database fruit_sample_3" | psql -U postgres -h postgres
           psql -U postgres -h postgres -d fruit_sample_3 < ./test/pgci.sql
-          
-      - name: Now check out the code
-        uses: actions/checkout@v4
+
+      
       - name: Install NPM packages
         run: |
           npm ci
