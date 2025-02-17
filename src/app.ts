@@ -14,8 +14,8 @@ app
   .get('/time', async (req: Request, res: Response) => {
     // const client = new pg.Client()
     const client = new pg.Client({
-      host: process.env.PGHOST,
-      port: Number(process.env.PGPORT),
+      host: 'localhost',
+      port: 5432,
       user: 'postgres',
       password: 'postgres',
       database: 'postgres'
