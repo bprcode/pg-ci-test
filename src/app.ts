@@ -19,8 +19,21 @@ app
     const result = await client.query('SELECT NOW()')
     console.log('Now() query result:', result)
 
-    await client.end()
+    client.end()
+    res.json(result.rows)
+  })
 
+  .get('/fruits', async (req: Request, res: Response) => {
+    const query = `
+      SELECT * FROM fruits;
+    `
+    const client = new pg.Client()
+
+    await client.connect()
+    const result = await client.query(query)
+    console.log('query result:', result.rows)
+
+    client.end()
     res.json(result.rows)
   })
 
