@@ -10,7 +10,7 @@ on:
     branches: [ "spin-postgres" ]
 
 env:
-  SAMPLE_KEY: yamlSampleKey
+  TEST_DATABASE_NAME: fruit_sample_4
 
 jobs:
   spin-up-postgres:
@@ -52,8 +52,8 @@ jobs:
         env:
           PGPASSWORD: postgres
         run: |
-          echo "create database fruit_sample_3" | psql -U postgres -h postgres
-          psql -U postgres -h postgres -d fruit_sample_3 < ./test/pgci.sql
+          echo "create database $TEST_DATABASE_NAME" | psql -U postgres -h postgres
+          psql -U postgres -h postgres -d $TEST_DATABASE_NAME < ./test/pgci.sql
 
       
       - name: Install NPM packages
@@ -67,7 +67,7 @@ jobs:
           PGPORT: 5432
           PGUSER: postgres
           PGPASSWORD: postgres
-          PGDATABASE: fruit_sample_3
+          PGDATABASE: ${{ env.TEST_DATABASE_NAME }}
       # - name: Make test curl
       #   run: |
       #     echo Curl result: $(curl http://localhost:3000/time)

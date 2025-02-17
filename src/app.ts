@@ -64,7 +64,7 @@ let server = app.listen(3000, () => {
   console.log(
     '🦆 Server up: \u001b[36mhttp://localhost:' + address.port + '\u001b[37m'
   )
-  const keys = ['SAMPLE_KEY', 'POSTGRES_HOST', 'PGHOST', 'PGPORT', 'PGUSER']
+  const keys = ['PGHOST', 'PGPORT', 'PGUSER', 'PGDATABASE']
   for (const key of keys) {
     console.log(key, ':', process.env[key])
   }
