@@ -25,7 +25,7 @@ app
 
   .get('/fruits', async (req: Request, res: Response) => {
     const query = `
-      SELECT * FROM public.fruits;
+      SELECT * FROM fruits;
     `
     const client = new pg.Client()
 
