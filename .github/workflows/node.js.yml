@@ -18,6 +18,9 @@ jobs:
     # Run on Linux OS, as required for containers:
     runs-on: ubuntu-latest
 
+    # Ensure limited resource usage:
+    timeout-minutes: 1
+
     # Starting point image?
     container: node:22-bookworm
 
@@ -46,7 +49,7 @@ jobs:
           echo "haven't started server yet..."
           ps
       - name: Start the server
-        run: node dist/app.js &
+        run: node dist/app.js
       - name: Make test curl
         run: |
           echo Curl result: $(curl http://localhost:3000 -s)
