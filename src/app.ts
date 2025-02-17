@@ -11,7 +11,7 @@ app
     res.send('Status OK')
   })
 
-  .get('/time', async (req:Request, res:Response) => {
+  .get('/time', async (req: Request, res: Response) => {
     const client = new pg.Client()
 
     await client.connect()
@@ -42,7 +42,7 @@ app
 
 let server = app.listen(3000, () => {
   const address = server.address()
-  if(!address || typeof address === 'string') {
+  if (!address || typeof address === 'string') {
     console.log('Unfamiliar address type:', address)
     return
   }
@@ -50,8 +50,8 @@ let server = app.listen(3000, () => {
   console.log(
     '🦆 Server up: \u001b[36mhttp://localhost:' + address.port + '\u001b[37m'
   )
-  const keys = ['SAMPLE_KEY', 'POSTGRES_HOST', 'PGHOST', 'PGPORT']
-  for(const key of keys) {
+  const keys = ['SAMPLE_KEY', 'POSTGRES_HOST', 'PGHOST', 'PGPORT', 'PGUSER']
+  for (const key of keys) {
     console.log(key, ':', process.env[key])
   }
 })

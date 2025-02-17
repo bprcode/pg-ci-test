@@ -49,8 +49,11 @@ jobs:
       - name: Start the server
         run: node dist/app.js &
         env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
+          PGHOST: localhost
+          PGPORT: 5432
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          PGDATABASE: postgres
       - name: Make test curl
         run: |
           echo Curl result: $(curl http://localhost:3000/time)
