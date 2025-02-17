@@ -70,7 +70,7 @@ jobs:
           echo "create database fruit_sample_3" | psql -U postgres -h postgres
           psql -U postgres -h postgres -d fruit_sample_3 < ./test/pgci.sql
       - name: Test endpoints
-        run:
+        run: |
           apt install -y curl
           curl http://localhost:3000/fruits
 
