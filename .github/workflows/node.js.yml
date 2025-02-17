@@ -54,7 +54,7 @@ jobs:
       - name: Start the server
         run: node dist/app.js &
         env:
-          PGHOST: localhost
+          PGHOST: postgres
           PGPORT: 5432
           PGUSER: postgres
           PGPASSWORD: postgres
