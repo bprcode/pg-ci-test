@@ -61,7 +61,9 @@ jobs:
           npm ci
           npm run build
       - name: Start the server
-        run: node dist/app.js &
+        run: |
+          node dist/app.js &
+          sleep 5 && npm test
         env:
           PGHOST: postgres
           PGPORT: 5432
@@ -75,8 +77,6 @@ jobs:
           echo "🦆 Try curl with localhost"
           curl http://localhost:3000/time
           curl http://localhost:3000/fruits
-          echo "🦆 Try curl with 127"
-          curl http://127.0.0.1:3000/fruits
 
       - name: Run Newman tests
         run: |
