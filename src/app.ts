@@ -13,13 +13,7 @@ app
 
   .get('/time', async (req: Request, res: Response) => {
     // const client = new pg.Client()
-    const client = new pg.Client({
-      host: process.env.PGHOST,
-      port: Number(process.env.PGPORT),
-      user: process.env.PGUSER,
-      password: process.env.PGPASSWORD,
-      database: process.env.PGDATABASE
-  });
+    const client = new pg.Client()
 
     await client.connect()
     const result = await client.query('SELECT NOW()')
