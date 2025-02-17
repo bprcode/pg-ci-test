@@ -72,8 +72,11 @@ jobs:
       - name: Test endpoints
         run: |
           apt install -y curl
+          echo "🦆 Try curl with localhost"
           curl http://localhost:3000/time
           curl http://localhost:3000/fruits
+          echo "🦆 Try curl with 127"
+          curl http://127.0.0.1:3000/fruits
 
       - name: Run Newman tests
         run: |

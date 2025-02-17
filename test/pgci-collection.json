@@ -91,7 +91,7 @@
 	"variable": [
 		{
 			"key": "local_server",
-			"value": "http://localhost:3000",
+			"value": "http://127.0.0.1:3000",
 			"type": "string"
 		}
 	]
