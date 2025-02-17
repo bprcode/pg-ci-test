@@ -41,6 +41,18 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Install psql
+        run: |
+          apt update
+          apt install -y postgresql-client
+          psql --version
+      - name: Load database
+        env:
+          PGPASSWORD: postgres
+        run: |
+          echo "create database fruit_sample_3" | psql -U postgres -h postgres
+          psql -U postgres -h postgres -d fruit_sample_3 < ./test/pgci.sql
+          
       - name: Now check out the code
         uses: actions/checkout@v4
       - name: Install NPM packages
@@ -54,21 +66,11 @@ jobs:
           PGPORT: 5432
           PGUSER: postgres
           PGPASSWORD: postgres
-          PGDATABASE: postgres
+          PGDATABASE: fruit_sample_3
       # - name: Make test curl
       #   run: |
       #     echo Curl result: $(curl http://localhost:3000/time)
-      - name: Install psql
-        run: |
-          apt update
-          apt install -y postgresql-client
-          psql --version
-      - name: Load database
-        env:
-          PGPASSWORD: postgres
-        run: |
-          echo "create database fruit_sample_3" | psql -U postgres -h postgres
-          psql -U postgres -h postgres -d fruit_sample_3 < ./test/pgci.sql
+      
       - name: Test endpoints
         run: |
           apt install -y curl
