@@ -48,6 +48,9 @@ jobs:
           npm run build
       - name: Start the server
         run: node dist/app.js &
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
       - name: Make test curl
         run: |
           echo Curl result: $(curl http://localhost:3000/time)
