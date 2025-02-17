@@ -64,6 +64,8 @@ jobs:
           apt install -y postgresql-client
           psql --version
       - name: Load database
+        env:
+          PGPASSWORD: postgres
         run: |
           echo "create database fruit_sample_2" | psql -U postgres -h postgres
           psql -U postgres -h postgres -d fruit_sample_2 < ./test/example-schema.sql
