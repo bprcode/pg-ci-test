@@ -51,7 +51,7 @@ jobs:
         run: |
           echo "before..."
           ps
-          pkill node
+          pkill -f "node"
           echo "after..."
           ps
       - name: Try once again to shut down the server
