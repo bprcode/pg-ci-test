@@ -67,7 +67,7 @@ jobs:
         env:
           PGPASSWORD: postgres
         run: |
-          echo "create database fruit_sample_2" | psql -U postgres -h postgres
-          psql -U postgres -h postgres -d fruit_sample_2 < ./test/example-schema.sql
+          echo "create database fruit_sample_3" | psql -U postgres -h postgres
+          psql -U postgres -h postgres -d fruit_sample_3 < ./test/pgci.sql
 
 
