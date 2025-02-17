@@ -51,7 +51,7 @@ jobs:
         run: |
           echo "before..."
           ps
-          pkill -f "node"
+          pgrep -io "node" | xargs kill 
           echo "after..."
           ps
       - name: Try once again to shut down the server
