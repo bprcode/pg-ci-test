@@ -11,6 +11,18 @@ app
     res.send('Status OK')
   })
 
+  .get('/time', async (req:Request, res:Response) => {
+    const client = new pg.Client()
+
+    await client.connect()
+    const result = await client.query('SELECT NOW()')
+    console.log('Now() query result:', result)
+
+    await client.end()
+
+    res.json(result.rows)
+  })
+
   .get('/test-query', async (req: Request, res: Response) => {
     const client = new pg.Client()
 
@@ -24,7 +36,7 @@ app
   })
 
   .use((err: Error, req: Request, res: Response, next: Function) => {
-    console.log('ERROR HANDLER:', err)
+    console.log('🛑 Error encountered:', err)
     res.status(500).send('⚠️ Server error: ' + err.message)
   })
 
