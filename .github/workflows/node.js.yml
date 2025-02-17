@@ -60,6 +60,7 @@ jobs:
       #     echo Curl result: $(curl http://localhost:3000/time)
       - name: Is psql installed?
         run: |
+          apt update
           apt install -y postgresql-client
           psql --version
 
