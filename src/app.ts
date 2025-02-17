@@ -21,6 +21,8 @@ app
       database: 'postgres'
   });
 
+    console.log('❔ is this behavior consistent?')
+
     await client.connect()
     const result = await client.query('SELECT NOW()')
     console.log('Now() query result:', result)
