@@ -12,7 +12,14 @@ app
   })
 
   .get('/time', async (req: Request, res: Response) => {
-    const client = new pg.Client()
+    // const client = new pg.Client()
+    const client = new pg.Client({
+      host: process.env.PGHOST,
+      port: Number(process.env.PGPORT),
+      user: 'postgres',
+      password: 'postgres',
+      database: 'postgres'
+  });
 
     await client.connect()
     const result = await client.query('SELECT NOW()')
