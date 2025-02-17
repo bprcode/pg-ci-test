@@ -22,7 +22,8 @@ jobs:
     timeout-minutes: 5
 
     # Starting point image?
-    container: node:22-bookworm
+    # container: node:22-bookworm
+    container: node:22-bookworm-slim
 
     # We will run a service within our job:
     services:
@@ -54,8 +55,10 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
           PGDATABASE: postgres
-      - name: Make test curl
-        run: |
-          echo Curl result: $(curl http://localhost:3000/time)
+      # - name: Make test curl
+      #   run: |
+      #     echo Curl result: $(curl http://localhost:3000/time)
+      - name: Is psql installed?
+        run: psql -?
 
 
