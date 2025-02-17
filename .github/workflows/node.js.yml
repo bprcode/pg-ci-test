@@ -21,7 +21,7 @@ jobs:
     # Ensure limited resource usage:
     timeout-minutes: 5
 
-    # Starting point image?
+    # Starting point image
     # container: node:22-bookworm
     container: node:22-bookworm-slim
 
@@ -68,14 +68,15 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
           PGDATABASE: ${{ env.TEST_DATABASE_NAME }}
-      # - name: Make test curl
-      #   run: |
-      #     echo Curl result: $(curl http://localhost:3000/time)
       
       - name: Test endpoints
         run: |
           apt install -y curl
           curl http://localhost:3000/time
           curl http://localhost:3000/fruits
+
+      - name: Run Newman tests
+        run: |
+          npm test
 
 
