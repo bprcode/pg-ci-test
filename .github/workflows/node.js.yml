@@ -74,7 +74,7 @@ jobs:
       - name: Test endpoints
         run: |
           echo "🐥 Try curl"
-          apt install -y ps
+          apt install -y procps
           ps
           apt install -y curl
           echo "🦆 Try curl with localhost"
