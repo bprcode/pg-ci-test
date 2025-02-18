@@ -59,7 +59,7 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Start the server
+      - name: Start and test the server
         run: |
           node dist/app.js &
           sleep 5 && npm test
