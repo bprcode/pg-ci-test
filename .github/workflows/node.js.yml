@@ -73,6 +73,8 @@ jobs:
       
       - name: Test endpoints
         run: |
+          echo "🐥 Try curl"
+          ps
           apt install -y curl
           echo "🦆 Try curl with localhost"
           curl http://localhost:3000/time
@@ -80,6 +82,8 @@ jobs:
 
       - name: Run Newman tests
         run: |
+          echo "🐐 Try curl"
+          ps
           curl http://localhost:3000/time
           npm test
 
