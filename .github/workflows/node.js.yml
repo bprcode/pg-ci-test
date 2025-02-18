@@ -47,7 +47,6 @@ jobs:
         run: |
           apt update
           apt install -y postgresql-client
-          psql --version
       - name: Load database
         env:
           PGPASSWORD: postgres
@@ -70,26 +69,5 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
           PGDATABASE: ${{ env.TEST_DATABASE_NAME }}
-      
-      - name: Install procps and curl
-        run: |
-          apt install -y procps
-          apt install -y curl
-
-      - name: Run Newman tests
-        run: |
-          echo "🐐 Try delay?"
-          sleep 30
-          ps
-          curl http://localhost:3000/time
-          npm test
-
-      - name: Test endpoints
-        run: |
-          ps
-          echo "🦆 Try curl with localhost"
-          curl http://localhost:3000/time
-          curl http://localhost:3000/fruits
-
 
 
