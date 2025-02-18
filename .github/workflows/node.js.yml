@@ -78,11 +78,12 @@ jobs:
 
       - name: Run Newman tests
         run: |
-          echo "🐐 Try curl"
+          echo "🐐 Try delay?"
+          sleep 30
           ps
           curl http://localhost:3000/time
           npm test
-          
+
       - name: Test endpoints
         run: |
           ps
