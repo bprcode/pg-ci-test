@@ -80,6 +80,7 @@ jobs:
 
       - name: Run Newman tests
         run: |
+          curl http://localhost:3000/time
           npm test
 
 
