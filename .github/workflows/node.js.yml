@@ -71,15 +71,10 @@ jobs:
           PGPASSWORD: postgres
           PGDATABASE: ${{ env.TEST_DATABASE_NAME }}
       
-      - name: Test endpoints
+      - name: Install procps and curl
         run: |
-          echo "🐥 Try curl"
           apt install -y procps
-          ps
           apt install -y curl
-          echo "🦆 Try curl with localhost"
-          curl http://localhost:3000/time
-          curl http://localhost:3000/fruits
 
       - name: Run Newman tests
         run: |
@@ -87,5 +82,13 @@ jobs:
           ps
           curl http://localhost:3000/time
           npm test
+          
+      - name: Test endpoints
+        run: |
+          ps
+          echo "🦆 Try curl with localhost"
+          curl http://localhost:3000/time
+          curl http://localhost:3000/fruits
+
 
 
